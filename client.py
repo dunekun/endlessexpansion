@@ -886,7 +886,7 @@ async def on_ready():
 	ewutils.logMsg("finished landmark precomputation")
 
 	try:
-		await client.change_presence(activity = discord.Game(name = "EW " + ewcfg.version))
+		await client.change_presence(activity = discord.Game(name = "EE " + ewcfg.version))
 	except:
 		ewutils.logMsg("Failed to change_presence!")
 
