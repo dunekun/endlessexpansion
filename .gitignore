@@ -1,0 +1,9 @@
+token
+__pycache__
+twitch_client_id
+msgqueue
+vcs.xml
+ewdebug.py
+.idea
+.idea/workspace.xml
+.vscode/launch.json

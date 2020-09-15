@@ -33,8 +33,8 @@ mines_map = {
 	ewcfg.poi_id_mine: juviesrow_mines,
 	ewcfg.poi_id_tt_mines: toxington_mines,
 	ewcfg.poi_id_cv_mines: cratersville_mines,
-	ewcfg.poi_id_downtown: downtown
-
+	ewcfg.poi_id_downtown: downtown,
+	
 }
 
 scavenge_combos = {}
@@ -173,13 +173,13 @@ async def renounce(cmd):
 	#	response = "To turn in your badge, you must return to your soon-to-be former gang base."
 
 	else:
-		renounce_fee = int(user_data.slimes) / 2
+		renounce_fee = int(user_data.slimes) / 10
 		user_data.change_slimes(n = -renounce_fee)
 		faction = user_data.faction
 		user_data.life_state = ewcfg.life_state_juvenile
 		user_data.weapon = -1
 		user_data.persist()
-		response = "You are no longer enlisted in the {}, but you are not free of association with them. Your former teammates immediately begin to beat the shit out of you, knocking you down {} cup sizes before you're able to get away.".format(faction, renounce_fee)
+		response = "You are no longer enlisted in the {}, but you are not free of association with them. Your former teammates immediately begin milking you, stealing {} estrogen levels before you're able to get away.".format(faction, renounce_fee)
 		await ewrolemgr.updateRoles(client = cmd.client, member = cmd.message.author)
 
 	await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
@@ -256,7 +256,8 @@ async def mine(cmd):
 
 			if user_data.poi not in mines_map:
 				print('mine check 3')
-				response = "You can't mine here! Go to the mines in Juvie's Row, Toxington, or Cratersville!"
+				response = "You can't squeeze here! Actually... how did you get here? Message Dunekun for help."
+				#response = "You can't mine here! Go to the mines in Juvie's Row, Toxington, or Cratersville!"
 				return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
 			elif user_data.id_server not in mines_map.get(user_data.poi):
 				init_grid(user_data.poi, user_data.id_server)
@@ -480,7 +481,7 @@ async def flag(cmd):
 		#	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, "Milkers only squeeze under cover of darkness. Wait for nightfall at 8pm.".format(ewcfg.cmd_revive)))
 
 	# Mine only in the mines.
-	if user_data.poi in [ewcfg.poi_id_downtown, ewcfg.poi_id_mine, ewcfg.poi_id_cv_mines, ewcfg.poi_id_tt_mines]:
+	if user_data.poi in [ewcfg.poi_id_downtown, ewcfg.poi_id_mine, ewcfg.poi_id_cv_mines, ewcfg.poi_id_tt_mines, ewcfg.poi_id_thesewers]:
 		poi = ewcfg.id_to_poi.get(user_data.poi)
 		district_data = EwDistrict(district = poi.id_poi, id_server = user_data.id_server)
 
@@ -510,7 +511,7 @@ async def flag(cmd):
 
 			if user_data.poi not in mines_map:
 				print('mine check 1')
-				response = "You can't mine here! Go to the mines in Juvie's Row, Toxington, or Cratersville!"
+				response = "You can't squeeze here! Find your way back to the titty bar! (or message Dunekun)"
 				return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
 			elif user_data.id_server not in mines_map.get(user_data.poi):
 				init_grid(user_data.poi, user_data.id_server)
@@ -577,7 +578,7 @@ async def flag(cmd):
 
 
 	else:
-		response = "You can't mine here! Go to the mines in Juvie's Row, Toxington, or Cratersville!"
+		response = "You can't squeeze here! Find your way back to the titty-bar! (or message Dunekun)"
 		print('mine check 2')
 
 	if len(response) > 0:
@@ -650,7 +651,7 @@ async def mismine(cmd, user_data, cause):
 			else:
 				return
 		else:
-			response = "You can't mine in this channel. Go elsewhere."
+			response = "You can't squeeze here! Go to the titty bar!"
 
 		await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
 
@@ -837,9 +838,9 @@ async def crush(cmd):
 			user_data.persist()
 			
 			if crunch_used:
-				response = "You swallow the estrogen poudrin.\nYou gain {} size{}. Sick, dude!!".format(crush_slimes, sap_resp)
+				response = "You swallow the estrogen poudrin.\nYou get {} estrogen{}. Sick, dude!!".format(crush_slimes, sap_resp)
 			else:
-				response = "You inject the estrogen.\nYou gain {} size{}. Sick, dude!!".format(crush_slimes, sap_resp)
+				response = "You inject the poudrin.\nYou get {} estrogen{}. Sick, dude!!".format(crush_slimes, sap_resp)
 			
 			if len(levelup_response) > 0:
 				response += "\n\n" + levelup_response

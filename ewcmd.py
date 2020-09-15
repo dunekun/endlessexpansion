@@ -125,24 +125,26 @@ def gen_score_text(
 		response = "{}'s power is beyond your understanding.".format(display_name)
 	else:
 		# return somebody's score
-		response = "{}'s size is {:,} {}.".format(display_name, user_data.slimes, (" and {} estrogen poudrin{}".format(poudrin_amount, ("" if poudrin_amount == 1 else "s")) if poudrin_amount > 0 else ""))
+		response = "{}'s cupsize is {}and their overall estrogen level is {:,} {}. They've had sex {} times".format(display_name, user_data.slimelevel, user_data.slimes, user_data.sex_counter, (" and {} estrogen poudrin{}".format(poudrin_amount, ("" if poudrin_amount == 1 else "s")) if poudrin_amount > 0 else ""))
 
 	return response
+
 
 """ show player's slime score """
 async def score(cmd):
 	time_now_cmd_start = int(time.time())
 	user_data = None
 	member = None
-
-	if cmd.mentions_count == 0:
+	
+	if (cmd.mentions_count == 0):
 		user_data = EwUser(member = cmd.message.author)
 
 		poudrin_amount = ewitem.find_poudrin(id_user = cmd.message.author.id, id_server = cmd.guild.id)
 
 		# return my score
-		response = "Your cupsize is {}, your overall boob size is {:,} {}.".format(user_data.slimelevel, user_data.slimes, (" and {} estrogen poudrin{}".format(poudrin_amount, ("" if poudrin_amount == 1 else "s")) if poudrin_amount > 0 else ""))
+		print("poudrins found: {}".format(poudrin_amount))
 
+		response = "Your cupsize is {}, your overall estrogen level is {:,} {}. You've had sex {} times.".format(user_data.slimelevel, user_data.slimes, (" and {} estrogen poudrin{}".format(poudrin_amount, ("" if poudrin_amount == 1 else "s")) if poudrin_amount > 0 else ""), user_data.sex_counter)		
 	else:
 		member = cmd.mentions[0]
 		response = gen_score_text(
@@ -162,9 +164,9 @@ async def score(cmd):
 	time_now_role_end = int(time.time())
 	
 	time_now_cmd_end = int(time.time())
-	# ewutils.logMsg('send_message took {} seconds.'.format(time_now_msg_end - time_now_msg_start))
-	# ewutils.logMsg('updateRoles took {} seconds.'.format(time_now_role_end - time_now_role_start))
-	# ewutils.logMsg('total command time took {} seconds.'.format(time_now_cmd_end - time_now_cmd_start))
+	ewutils.logMsg('send_message took {} seconds.'.format(time_now_msg_end - time_now_msg_start))
+	ewutils.logMsg('updateRoles took {} seconds.'.format(time_now_role_end - time_now_role_start))
+	ewutils.logMsg('total command time took {} seconds.'.format(time_now_cmd_end - time_now_cmd_start))
 
 
 def gen_data_text(
@@ -647,7 +649,7 @@ async def mutations(cmd):
 			mutation_flavor = ewcfg.mutations_map[mutation]
 			response += "{} ".format(mutation_flavor.str_describe_self)
 		if len(mutations) == 0:
-			response = "You are miraculously unmodified from your normal genetic code!"
+			response = "You have completely vanilla taste!"
 
 	else:
 		member = cmd.mentions[0]
@@ -660,7 +662,7 @@ async def mutations(cmd):
 			mutation_flavor = ewcfg.mutations_map[mutation]
 			response += "{} ".format(mutation_flavor.str_describe_other)
 		if len(mutations) == 0:
-			response = "They are miraculously unmodified from their normal genetic code!"
+			response = "They have completely vanilla taste!"
 
 	await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
 
@@ -967,11 +969,12 @@ async def hurl(cmd):
 	await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, 'https://ew.krakissi.net/img/tfaaap-hurl.gif'))
 
 async def lol(cmd):
-	await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, 'You laugh out loud!'))
+	await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, ewcfg.emote_dunelol + 'You laugh out loud!' + ewcfg.emote_dunelol))
 
 """
 	Rowdys THRASH/jiggle
 """
+
 ###okay i'm gonna try and make a new jiggle command
 
 async def thrash(cmd):
@@ -991,10 +994,139 @@ async def dab(cmd):
 	if user_data.faction == ewcfg.faction_boober:
 		await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, 'You cant do that Boober!'))
 
-
+####NEW COMMANDS###
+async def compliment (cmd):
+	if cmd.mentions_count == 1:
+		member = cmd.mentions[0]
+		
+		response_choices = [
+			"their boobs are looking pretty big!",
+			"they're looking bustier than usual!",
+			"they're looking like a snack that smiles back!",
+			"you love how big their boobs are!",
+			"they have a great personality!",
+			"you're in lesbians with them!"
+		]
+		
+		choice_response = random.choice(response_choices)
+		
+		response = "You tell {} that {}".format(member.display_name, choice_response)
+	else:
+		response = "You give yourself a nice compliment because you're worth it."
 	
+	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
+
+async def kiss(cmd):
+	if cmd.mentions_count == 1:
+		member = cmd.mentions[0]
+		
+		response_choices = [
+			"! How cute!",
+			"! Wow! Hot and steamy!",
+			", how adorable! UwU",
+		]
+		
+		choice_response = random.choice(response_choices)
+		
+		response = "You give {} a kiss{}".format(member.display_name, choice_response)
+	else:
+		response = "You want to kiss... who, exactly?"
+	
+	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
+
+async def smother(cmd):
+	if cmd.mentions_count == 1:
+		member = cmd.mentions[0]
+		user_1 = EwUser(member=cmd.message.author)
+		user_2 = EwUser(member=cmd.mentions[0])
+
+		if user_1.slimes > user_2.slimes:
+			response = "You smother {} with your big tits!".format(member.display_name)
+		elif user_1.slimes < user_2.slimes:
+			response = "You *try* to smother {} but their tits are too big!".format(member.display_name)
+		else:
+			response = "Your tits are the same size... can't you just get along?".format(member.display_name)
+		
+	else: 
+		response = "Who are you trying to smother?"
+
+	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
+		
+async def milk(cmd):
+	if cmd.mentions_count == 1:
+		member = cmd.mentions[0]
+		user_data = EwUser(member = cmd.message.author)
+		if user_data.faction == ewcfg.faction_milkers:
+			response_choices = [
+			"Woah, that's a lot of milk!",
+			"Yum!",
+			"It's overflowing!",
+		]
+		
+		choice_response = random.choice(response_choices)
+		
+		response = "You give {}'s titties a nice milking! {}".format(member.display_name, choice_response)
+	else:
+		response = "You whip out your tits and give yourself a nice milking!"
+	
+	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
+
+async def fondle(cmd):
+	if cmd.mentions_count == 1:
+		member = cmd.mentions[0]
+		response_choices = [
+			"Nice and smooth!",
+			"They're full of love! (and milk)",
+			"They barely fit in your hand!",
+			"You can't fit them in your hand!",
+			"How'd they get this big???",
+		]
+		choice_response = random.choice(response_choices)
+		
+		response = "You give {}'s breasts some nice squeezes! {}".format(member.display_name, choice_response)
+	else:
+		response = "You whip out your breasts and massage them!"
+	
+	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
+
+
+async def flatten(cmd):
+	if cmd.mentions_count == 1:
+		member = cmd.mentions[0]
+		user_data = EwUser(member = cmd.message.author)
+		if user_data.faction == ewcfg.faction_milkers:
+			response = "You use your mommy milkers to flatten {}!".format(member.display_name)
+		elif user_data.faction == ewcfg.faction_boober:
+			response = "You use your big boobs to flatten {}!".format(member.display_name)
+		else:
+			response = "Huh? How are you supposed to flatten someone with no tits? Join a faction, flat freak!".format(member.display_name)
+	else:
+		response = "You can't flatten yourself, silly!"
+	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
+
+async def grill(cmd):
+	user_data = EwUser(member = cmd.message.author)
+	if user_data.faction == ewcfg.faction_milkers:
+		await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, "Your mommy milkers are getting in the way! You can't see what you are grilling!"))
+	elif user_data.faction == ewcfg.faction_boober:
+		await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, "Your big boobies are getting in the way! You can't see what you are grilling!"))
+	else:
+		await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, "You grill up some mouth-watering hamburgers without a problem!"))
+
+async def hug(cmd):
+	if cmd.mentions_count == 1:
+		member = cmd.mentions[0]
+		
+		response = "You give {} a biiiiiiiiiig hug!".format(member.display_name)
+	else:
+		response = "You hug yourself, which is valid."
+	
+	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
+
 async def testboy(cmd):
 	print('jiggle works')
+
+
 """
 	Juvies DANCE
 """
@@ -1247,7 +1379,7 @@ async def booru(cmd):
 """
 async def leaderboard(cmd):
 	await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, 'Live leaderboards: https://ew.krakissi.net/stats/'))
-
+#sex accept command
 """ Accept a russian roulette challenge """
 async def accept(cmd):
 	user = EwUser(member = cmd.message.author)
@@ -1256,12 +1388,7 @@ async def accept(cmd):
 		if(ewutils.active_target_map.get(user.id_user) != user.id_user and ewutils.active_target_map.get(challenger.id_user) != user.id_user):
 			ewutils.active_target_map[challenger.id_user] = user.id_user
 			slimeoid_data = EwSlimeoid(member = cmd.message.author)
-			response = ""
-			if user.poi == ewcfg.poi_id_arena and ewslimeoid.active_slimeoidbattles.get(slimeoid_data.id_slimeoid):
-				response = "You accept the challenge! Both of your Slimeoids ready themselves for combat!"
-			elif user.poi == ewcfg.poi_id_thecasino and ewutils.active_restrictions[challenger.id_user] == 1:
-				response = "You accept the challenge! Both of you head out back behind the casino and load a bullet into the gun."
-
+			response = "testing sex"
 			if len(response) > 0:
 				await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
 

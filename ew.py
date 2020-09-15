@@ -19,6 +19,9 @@ class EwUser:
 
 	combatant_type = "player"
 
+	#""ENDLESS EXPANSION""
+	sex_counter = 0
+
 	slimes = 0
 	slimecoin = 0
 	slime_donations = 0
@@ -1003,7 +1006,7 @@ class EwUser:
 				# Retrieve object
 
 
-				cursor.execute("SELECT {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {} FROM users WHERE id_user = %s AND id_server = %s".format(
+				cursor.execute("SELECT {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {} FROM users WHERE id_user = %s AND id_server = %s".format(
 
 					ewcfg.col_slimes,
 					ewcfg.col_slimelevel,
@@ -1061,6 +1064,9 @@ class EwUser:
 					ewcfg.col_time_lastpremiumpurchase,
 					ewcfg.col_gvs_currency,
 					ewcfg.col_gvs_time_lastshambaquarium,
+
+					ewcfg.col_sex_counter,
+
 				), (
 					id_user,
 					id_server
@@ -1119,6 +1125,9 @@ class EwUser:
 					self.sidearm = result[47]
 					self.gambit = result[48]
 					self.credence = result[49]
+
+					self.sex_counter = result[50]
+
 					self.credence_used = result[50]
 					self.race = result[51]
 					self.time_racialability = result[52]
@@ -1217,7 +1226,7 @@ class EwUser:
 			self.limit_fix()
 
 			# Save the object.
-			cursor.execute("REPLACE INTO users({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)".format(
+			cursor.execute("REPLACE INTO users({}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)".format(
 				ewcfg.col_id_user,
 				ewcfg.col_id_server,
 				ewcfg.col_slimes,
@@ -1277,6 +1286,7 @@ class EwUser:
 				ewcfg.col_time_lastpremiumpurchase,
 				ewcfg.col_gvs_currency,
 				ewcfg.col_gvs_time_lastshambaquarium,
+				ewcfg.col_sex_counter,
 			), (
 				self.id_user,
 				self.id_server,
@@ -1337,6 +1347,7 @@ class EwUser:
 				self.time_lastpremiumpurchase,
 				self.gvs_currency,
 				self.gvs_time_lastshambaquarium,
+				self.sex_counter,
 			))
 
 			conn.commit()

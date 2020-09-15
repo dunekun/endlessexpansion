@@ -280,47 +280,54 @@ async def jiggle(cmd):
 		response = "You people are not allowed to do that."
 		
 	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
-
+#sex command
 async def request_petting(cmd):
 	user_data = EwUser(member = cmd.message.author)
 	response = ""
-	if user_data.race == ewcfg.races["critter"]:
-		if cmd.mentions_count == 0:
-			response = "Request petting from who?"
-		if cmd.mentions_count > 1:
-			response = "You would die of overpetting."
-		if cmd.mentions_count == 1:
-			target_member = cmd.mentions[0]
-			proposal_response = "You rub against {}'s leg and look at them expectantly. Will they **{}** and give you a rub, or do they **{}** your affection?".format(target_member.display_name, ewcfg.cmd_accept, ewcfg.cmd_refuse)
-			await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, proposal_response))
-    
-			accepted = False
-			try:
-				msg = await cmd.client.wait_for('message', timeout = 30, check=lambda message: message.author == target_member and 
-														message.content.lower() in [ewcfg.cmd_accept, ewcfg.cmd_refuse])
-				if msg != None:
-					if msg.content.lower() == ewcfg.cmd_accept:
-						accepted = True
-					elif msg.content.lower() == ewcfg.cmd_refuse:
-						accepted = False
-			except:
-				accepted = False
 
-			if accepted:
-				responses = [
-					"{user} gets on their back, and {target} gives them a thorough belly rub!",
-					"{target} cups {user}'s head between their hands, rubbing near their little ears with their thumbs.",
-					"{target} picks {user} up and carries them over the place for a little while, so they can see things from above.",
-					"{target} sits down next to {user}, who gets on their lap. They both lie there for a while, comforting one another.",
-					"{target} gets on the floor and starts petting the heck out of {user}!",
-				]
-				accepted_response = random.choice(responses).format(user = cmd.message.author.display_name, target = target_member.display_name)
-				await ewutils.send_message(cmd.client, cmd.message.channel, accepted_response)
-			else:
-				response = "The pain of rejection will only make you stronger, {}.".format(cmd.message.author.display_name)
-	else:
-		response = "You people are not allowed to do that."
-	if response:
+	if cmd.mentions_count == 0:
+		response = "Request sex from who?"
+	if cmd.mentions_count > 1:
+		response = "You would die of exhaustion."
+	if cmd.mentions_count == 1:
+		target_member = cmd.mentions[0]
+		proposal_response = "You tug on {}'s sleeve and look at them expectantly. Will they **{}** and have sex, or do they **{}** your proposition?".format(target_member.display_name, ewcfg.cmd_accept, ewcfg.cmd_refuse)
+		await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, proposal_response))
+
+		accepted = False
+		try:
+			msg = await cmd.client.wait_for('message', timeout = 30, check=lambda message: message.author == target_member and 
+													message.content.lower() in [ewcfg.cmd_accept, ewcfg.cmd_refuse])
+			if msg != None:
+				if msg.content.lower() == ewcfg.cmd_accept:
+					accepted = True
+				elif msg.content.lower() == ewcfg.cmd_refuse:
+					accepted = False
+		except:
+			accepted = False
+
+		if accepted:
+			user_data = EwUser(member=cmd.message.author)
+			user_data.sex_counter += 1
+			user_data.persist()
+			target_data = EwUser(member=target_member)
+			target_data.sex_counter += 1
+			target_data.persist()
+			
+			responses = [
+				"{user} holds {target}'s hand! WOAAAHHHH!",
+				"{target} picks {user} up and carries them over the place for a little while, so they can see things from above.",
+				"{target} sits down next to {user}, who gets on their lap. They both lie there for a while, comforting one another.",
+				"{target} gets on the floor and starts kissing the heck out of {user}!",
+				"{user} moans in pleasure!",
+				"{user} goes to town on {target}'s ass!",
+				"{user} and {target} engage in hot and steamy, ravenous sexual intercourse right then and there! They don't care that everyone can see!"
+			]
+			accepted_response = random.choice(responses).format(user = cmd.message.author.display_name, target = target_member.display_name)
+			await ewutils.send_message(cmd.client, cmd.message.channel, accepted_response)
+		else:
+			response = "The pain of rejection will only make you stronger, {}.".format(cmd.message.author.display_name)
+	if len(response) > 0:
 		return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
 
 async def rampage(cmd):

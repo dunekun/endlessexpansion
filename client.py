@@ -70,6 +70,7 @@ init_complete = False
 
 client = discord.Client()
 
+
 # A map containing user IDs and the last time in UTC seconds since we sent them
 # the help doc via DM. This is to prevent spamming.
 last_helped_times = {}
@@ -79,6 +80,20 @@ active_users_map = {}
 
 # Map of all command words in the game to their implementing function.
 cmd_map = {
+	## NEW COMMANDS FOR ENDLESS EXPANSION
+	ewcfg.cmd_kiss: ewcmd.kiss,
+	ewcfg.cmd_smother: ewcmd.smother,
+	ewcfg.cmd_milk: ewcmd.milk,
+	ewcfg.cmd_compliment: ewcmd.compliment,
+	ewcfg.cmd_fondle: ewcmd.fondle,
+	ewcfg.cmd_fondle_alt1: ewcmd.fondle,
+	ewcfg.cmd_fondle_alt2: ewcmd.fondle,
+	ewcfg.cmd_flatten: ewcmd.flatten,
+	ewcfg.cmd_hug: ewcmd.hug,
+	ewcfg.cmd_grill: ewcmd.grill,
+
+	#ewcfg.cmd_fondle: ewcmd.fondle,
+
 	# Attack another player
 	ewcfg.cmd_kill: ewwep.attack,
 	ewcfg.cmd_shoot: ewwep.attack,
@@ -742,7 +757,7 @@ cmd_map = {
 	# ewcfg.cmd_get_credence: ewcmd.get_credence, #debug
 	# ewcfg.cmd_reset_prank_stats: ewcmd.reset_prank_stats, #debug
 	# ewcfg.cmd_set_gambit: ewcmd.set_gambit, #debug
-	# ewcfg.cmd_pointandlaugh: ewcmd.point_and_laugh,
+	#ewcfg.cmd_pointandlaugh: ewcmd.point_and_laugh,
 	ewcfg.cmd_prank: ewcmd.prank,
 	
 	# Gankers Vs. Shamblers
@@ -977,7 +992,7 @@ async def on_ready():
 			asyncio.ensure_future(ewutils.spawn_enemies_tick_loop(id_server=server.id))
 
 		if not debug:
-			await ewtransport.init_transports(id_server = server.id)
+			#await ewtransport.init_transports(id_server = server.id)
 			asyncio.ensure_future(ewweather.weather_tick_loop(id_server = server.id))
 		asyncio.ensure_future(ewslimeoid.slimeoid_tick_loop(id_server = server.id))
 		asyncio.ensure_future(ewfarm.farm_tick_loop(id_server = server.id))
@@ -1329,7 +1344,7 @@ async def on_message_delete(message):
 async def on_message(message):
 	time_now = int(time.time())
 	ewcfg.set_client(client)
-
+	
 	""" do not interact with our own messages """
 	if message.author.id == client.user.id or message.author.bot == True:
 		return
@@ -1347,7 +1362,7 @@ async def on_message(message):
 			member = message.author,
 			server = message.guild
 		)
-
+	
 	content_tolower = message.content.lower()
 	content_tolower_list = content_tolower.split(" ")
 	
@@ -1540,7 +1555,7 @@ async def on_message(message):
 
 			if ewcfg.mutation_id_chameleonskin not in mutations or cmd not in ewcfg.offline_cmds:
 
-				response = "You cannot participate in the ENDLESS Expansion while offline."
+				response = "You cannot participate in the ENDLESS EXPANSION while offline."
     
 				return await ewutils.send_message(client, message.channel, ewutils.formatMessage(message.author, response))
 
@@ -1548,7 +1563,7 @@ async def on_message(message):
 		if user_data.time_lastoffline > time_now - ewcfg.time_offline:
 
 			if ewcfg.mutation_id_chameleonskin not in mutations or cmd not in ewcfg.offline_cmds:
-				response = "You are too paralyzed by ENDLESS Expansion's judgemental stare to act."
+				response = "You are too paralyzed by ENDLESS EXPANSION's judgemental stare to act."
 
 				return await ewutils.send_message(client, message.channel, ewutils.formatMessage(message.author, response))
 
@@ -1560,11 +1575,13 @@ async def on_message(message):
 		# Check the main command map for the requested command.
 		global cmd_map
 		cmd_fn = cmd_map.get(cmd)
+		print("timestamp 1: {}".format(int(time.time())))
 
 
 		if user_data.poi in ewcfg.tutorial_pois:	
 			return await ewdungeons.tutorial_cmd(cmd_obj)
-
+			print("timestamp 1: {}".format(int(time.time())))
+			
 		elif cmd_fn != None:
 			# Execute found command
 			return await cmd_fn(cmd_obj)
@@ -1961,7 +1978,7 @@ async def on_message(message):
 			randint = random.randint(1,3)
 			msg_mistake = "ENDLESS EXPANSION is growing frustrated."
 			if randint == 2:
-				msg_mistake = "ENDLESS EXPANSION denies you his favor."
+				msg_mistake = "ENDLESS EXPANSION denies you her favor."
 			elif randint == 3:
 				msg_mistake = "ENDLESS EXPANSION pays you no mind."
 
