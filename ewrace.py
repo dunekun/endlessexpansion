@@ -27,48 +27,49 @@ async def set_race(cmd):
 		'epic', # this one is for you, meaty
 	]
 
-	if time_now > user_data.time_racialability:
-		if len(cmd.tokens) > 1:
-			desired_race = cmd.tokens[1]
-			if desired_race in ewcfg.races.values() or desired_race in forbidden_races:
-				if desired_race == ewcfg.races["humanoid"]:
-					response = "ENDLESS WAR acknowledges you as a boring humanoid. Your lame and uninspired figure allows you to do nothing but **{}**.".format(ewcfg.cmd_exist)
-				elif desired_race == ewcfg.races["amphibian"]:
-					response = "ENDLESS WAR acknowledges you as some denomination of amphibian. You may now **{}** to let the world hear your fury.".format(ewcfg.cmd_ree)
-				elif desired_race == ewcfg.races["food"]:
-					response = "ENDLESS WAR acknowledges you as a member of the food race. If you must, you may now give in to your deepest desires, and **{}**.".format(ewcfg.cmd_autocannibalize)
-				elif desired_race == ewcfg.races["skeleton"]:
-					response = "ENDLESS WAR acknowledges you as a being of bone. You may now **{}** to intimidate your enemies or soothe yourself.".format(ewcfg.cmd_rattle)
-				elif desired_race == ewcfg.races["robot"]:
-					response = '\n```python\nplayer_data.race = "robot"	#todo: change to an ID\nplayer_data.unlock_command("{}")```'.format(ewcfg.cmd_beep)
-				elif desired_race == ewcfg.races["furry"]:
-					response = "ENDLESS WAR reluctantly acknowledges you as a furry. Yes, you can **{}** now, but please do it in private.".format(ewcfg.cmd_yiff)
-				elif desired_race == ewcfg.races["scalie"]:
-					response = "ENDLESS WAR acknowledges you as a scalie. You may now **{}** at your enemies as a threat.".format(ewcfg.cmd_hiss)
-				elif desired_race == ewcfg.races["slime-derived"]:
-					response = "ENDLESS WAR acknowledges you as some sort of slime-derived lifeform. **{}** to your heart's content, you goopy bastard.".format(ewcfg.cmd_jiggle)
-				elif desired_race == ewcfg.races["monster"]:
-					response = 'ENDLESS WAR acknowledges you as a monstrosity. Go on a **{}**, you absolute beast.'.format(ewcfg.cmd_rampage)
-				elif desired_race == ewcfg.races["critter"]:
-					response = "ENDLESS WAR acknowledges you as a little critter. You may **{}**s from others now. Adorable.".format(ewcfg.cmd_request_petting)
-				elif desired_race == ewcfg.races["avian"]:
-					response = "ENDLESS WAR acknowledges you as some kind of bird creature. You can now **{}** to fly away for a quick escape.".format(ewcfg.cmd_flutter)
-				elif desired_race == ewcfg.races["other"]:
-					response = 'ENDLESS WAR struggles to categorize you, and files you under "other". Your peculiar form can be used to **{}** those around you.'.format(ewcfg.cmd_confuse)
-				elif desired_race in forbidden_races:
-					response = 'In its infinite wisdom, ENDLESS WAR sees past your attempt at being funny and acknowledges you for what you _truly_ are: **a fucking retard**.'
+	if len(cmd.tokens) > 1:
+		desired_race = cmd.tokens[1]
+		if desired_race in ewcfg.races.values() or desired_race in forbidden_races:
+			if desired_race == ewcfg.races['sex-object']:
+				response = "ENDLESS EXPANSION acknowledges you as huge slut. This allows other users to **{}** you whenever they please.".format(ewcfg.cmd_fuck)
+			if desired_race == ewcfg.races['maiden']:
+				response = "ENDLESS EXPANSION acknowledges you as pure maiden. Other users can no longer **{}** you whenever they please.".format(ewcfg.cmd_fuck)
+			#if desired_race == ewcfg.races["humanoid"]:
+				#response = "ENDLESS WAR acknowledges you as a boring humanoid. Your lame and uninspired figure allows you to do nothing but **{}**.".format(ewcfg.cmd_exist)
+			#elif desired_race == ewcfg.races["amphibian"]:
+				#response = "ENDLESS WAR acknowledges you as some denomination of amphibian. You may now **{}** to let the world hear your fury.".format(ewcfg.cmd_ree)
+			#elif desired_race == ewcfg.races["food"]:
+				#response = "ENDLESS WAR acknowledges you as a member of the food race. If you must, you may now give in to your deepest desires, and **{}**.".format(ewcfg.cmd_autocannibalize)
+			#elif desired_race == ewcfg.races["skeleton"]:
+				#response = "ENDLESS WAR acknowledges you as a being of bone. You may now **{}** to intimidate your enemies or soothe yourself.".format(ewcfg.cmd_rattle)
+			#elif desired_race == ewcfg.races["robot"]:
+				#response = '\n```python\nplayer_data.race = "robot"	#todo: change to an ID\nplayer_data.unlock_command("{}")```'.format(ewcfg.cmd_beep)
+			elif desired_race == ewcfg.races["furry"]:
+				response = "ENDLESS EXPANSION reluctantly acknowledges you as a furry. Yes, you can **{}** now, but please do it in private.".format(ewcfg.cmd_yiff)
+			elif desired_race == ewcfg.races["scalie"]:
+				response = "ENDLESS EXPANSION acknowledges you as a scalie. You may now **{}** at your enemies as a threat.".format(ewcfg.cmd_hiss)
+			#elif desired_race == ewcfg.races["slime-derived"]:
+				#response = "ENDLESS WAR acknowledges you as some sort of slime-derived lifeform. **{}** to your heart's content, you goopy bastard.".format(ewcfg.cmd_jiggle)
+			#elif desired_race == ewcfg.races["monster"]:
+				#response = 'ENDLESS WAR acknowledges you as a monstrosity. Go on a **{}**, you absolute beast.'.format(ewcfg.cmd_rampage)
+			#elif desired_race == ewcfg.races["critter"]:
+				#response = "ENDLESS WAR acknowledges you as a little critter. You may **{}**s from others now. Adorable.".format(ewcfg.cmd_request_petting)
+			#elif desired_race == ewcfg.races["avian"]:
+				#response = "ENDLESS WAR acknowledges you as some kind of bird creature. You can now **{}** to fly away for a quick escape.".format(ewcfg.cmd_flutter)
+			#elif desired_race == ewcfg.races["other"]:
+				#response = 'ENDLESS WAR struggles to categorize you, and files you under "other". Your peculiar form can be used to **{}** those around you.'.format(ewcfg.cmd_confuse)
+			elif desired_race in forbidden_races:
+				response = 'In its infinite wisdom, ENDLESS EXPANSION sees past your attempt at being funny and acknowledges you for what you _truly_ are: **a fucking retard**.'
 
-				# only set the cooldown if the user is switching race, rather than setting it up for the first time
-				if user_data.race: 
-					user_data.time_racialability = time_now + ewcfg.cd_change_race
-				user_data.race = desired_race
-				user_data.persist()
-			else:
-				response = '"{}" is not an officially recognized race in NLACakaNM. Try one of the following instead: {}.'.format(desired_race, ", ".join(["**{}**".format(race) for race in ewcfg.races.values()]))
+			# only set the cooldown if the user is switching race, rather than setting it up for the first time
+			if user_data.race: 
+				user_data.time_racialability = time_now + ewcfg.cd_change_race
+			user_data.race = desired_race
+			user_data.persist()
 		else:
-			response = "Please select a race from the following: {}.".format(", ".join(["**{}**".format(race) for race in ewcfg.races.values()]))
+			response = '"{}" is not an officially recognized race. Try one of the following instead: {}.'.format(desired_race, ", ".join(["**{}**".format(race) for race in ewcfg.races.values()]))
 	else:
-		response = "You have either changed your race recently, or just used your racial ability. Try again later, race traitor."
+		response = "Please select a race from the following: {}.".format(", ".join(["**{}**".format(race) for race in ewcfg.races.values()]))
 	
 	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
 
@@ -211,8 +212,6 @@ async def yiff(cmd):
 		if cmd.mentions_count == 1:
 			target_data = EwUser(member = cmd.mentions[0])
 			if target_data.race == ewcfg.races["furry"]:
-				poi = ewcfg.id_to_poi.get(user_data.poi)
-				if (target_data.poi == user_data.poi) and poi.is_apartment: # low effort
 					responses = [
 						"Wow.",
 						"Mhmm.",
@@ -223,8 +222,6 @@ async def yiff(cmd):
 						"Congratulations."
 					]
 					response = random.choice(responses)
-				else:
-					response = "Out here, in the streets? Fuck no, what's wrong with you?"
 			else:
 				response = "Only furries can yiff, better find another partner."
 			pass
@@ -280,6 +277,38 @@ async def jiggle(cmd):
 		response = "You people are not allowed to do that."
 		
 	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
+
+#fuck
+async def fuck(cmd):
+	print('helpthisisthebeginning')
+	user_data = EwUser(member=cmd.message.author)
+	if cmd.mentions_count == 1:
+		target_member = cmd.mentions[0]
+		target_data = EwUser(member = target_member)
+		if target_data.race == ewcfg.races["sex-object"]:
+			user_data.sex_counter += 1
+			user_data.persist()
+			target_data = EwUser(member=target_member)
+			target_data.sex_counter += 1
+			target_data.persist()
+			responses = [
+				"{user} brusqely grabs {target} and bends them over a table, {target} is fucked relentlessly!",
+				"{user} pins {target} down and thrusts into them over and over, {target} is left dazed in a puddle of love juices!",
+				"{target} is rudely interrupted as {user} starts groping and kissing them them all over, {target} pretends to be upset, but it's obvious they love it.",
+				"{user} picks up {target} and carries them over to the love shack to for a quick fuck. {target} was in the middle of something but they don't mind.",
+				"{target}'s mouth is suddenly full of {user}'s cock. That'll shut em up!",
+				"{user} stands over {target} with an authoratative aura. {target} starts stripping, they know what to do...",
+			]
+			accepted_response = random.choice(responses).format(user = cmd.message.author.display_name, target = target_member.display_name)
+			await ewutils.send_message(cmd.client, cmd.message.channel, accepted_response)
+		else:
+			response = "You have to ask for permission first! They're not some sex object, y'know."
+		
+	else:
+		print('intheelse')
+		response = "Who are you trying to fuck?"
+	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
+
 #sex command
 async def request_petting(cmd):
 	user_data = EwUser(member = cmd.message.author)
@@ -316,10 +345,10 @@ async def request_petting(cmd):
 			
 			responses = [
 				"{user} holds {target}'s hand! WOAAAHHHH!",
-				"{target} picks {user} up and carries them over the place for a little while, so they can see things from above.",
-				"{target} sits down next to {user}, who gets on their lap. They both lie there for a while, comforting one another.",
-				"{target} gets on the floor and starts kissing the heck out of {user}!",
-				"{user} moans in pleasure!",
+				"{user} picks {target} up and carries them over the place for a little while, so they can see things from above.",
+				"{user} sits down next to {target}, who gets on their lap. They both lie there for a while, comforting one another.",
+				"{user} gets on the floor and starts kissing the heck out of {target}!",
+				"{target} moans in pleasure!",
 				"{user} goes to town on {target}'s ass!",
 				"{user} and {target} engage in hot and steamy, ravenous sexual intercourse right then and there! They don't care that everyone can see!"
 			]

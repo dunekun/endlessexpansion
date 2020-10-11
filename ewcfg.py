@@ -31,7 +31,7 @@ import ewdebug
 
 # Global configuration options.
 
-version = "v1.0 - Tit Rush"
+version = "v1.1 - Horny on Main"
 
 
 dir_msgqueue = 'msgqueue'
@@ -888,13 +888,33 @@ cmd_prefix = '?'
 cmd_smother = cmd_prefix + "smother"
 cmd_milk = cmd_prefix + "milk"
 cmd_kiss = cmd_prefix + "kiss"
+cmd_kiss_alt1 = cmd_prefix + "smooch"
+cmd_kiss_alt2 = cmd_prefix + "mwah"
+cmd_kiss_alt3 = cmd_prefix + "makeout"
 cmd_compliment = cmd_prefix + "compliment"
 cmd_fondle = cmd_prefix + "fondle"
 cmd_fondle_alt1 = cmd_prefix + "grope"
 cmd_fondle_alt2 = cmd_prefix + "massage"
 cmd_flatten = cmd_prefix + "flatten"
 cmd_hug = cmd_prefix + "hug"
+cmd_hug_alt1 = cmd_prefix + "glomp"
 cmd_grill = cmd_prefix + "grill"
+cmd_headpat = cmd_prefix + "headpat"
+cmd_headpat_alt1 = cmd_prefix + "pat"
+cmd_suckle = cmd_prefix + "suckle"
+cmd_request_petting = cmd_prefix + 'sex'
+cmd_request_petting_alt1 = cmd_prefix + 'dom'
+cmd_blush = cmd_prefix + 'blush'
+cmd_cuddle = cmd_prefix + "cuddle"
+cmd_fuck = cmd_prefix + 'fuck'
+
+cmd_enlist = cmd_prefix + 'enlist'
+cmd_thrash = cmd_prefix + 'jiggle'
+cmd_dab = cmd_prefix + 'squirt'
+cmd_score = cmd_prefix + 'size'
+cmd_score_alt1 = cmd_prefix + 'cupsize'
+cmd_mine = cmd_prefix + 'squeeze'
+
 #####
 cmd_enlist = cmd_prefix + 'enlist'
 cmd_renounce = cmd_prefix + 'renounce'
@@ -912,10 +932,8 @@ cmd_reload = cmd_prefix + 'aaaareload'
 cmd_reload_alt1 = cmd_prefix + 'aaaaloadthegun'
 cmd_unjam = cmd_prefix + 'aaaaunjam'
 cmd_devour = cmd_prefix + 'aaaadevour'
-cmd_mine = cmd_prefix + 'squeeze'
 cmd_flag = cmd_prefix + 'aaaaflag'
-cmd_score = cmd_prefix + 'size'
-cmd_score_alt1 = cmd_prefix + 'cupsize'
+
 #testing this out
 #cmd_poudrin = cmd_prefix + 'poudrin'
 ####
@@ -1044,7 +1062,7 @@ cmd_scrutinize= cmd_prefix + 'aaascrutinize'
 cmd_map = cmd_prefix + 'aaamap'
 cmd_transportmap = cmd_prefix + 'aaatransportmap'
 cmd_wiki = cmd_prefix + 'aaawiki'
-cmd_booru = cmd_prefix + 'abooru'
+cmd_booru = cmd_prefix + 'booru'
 cmd_pardon = cmd_prefix + 'NOPEIONLYICANpardon'
 cmd_banish = cmd_prefix + 'abanish'
 cmd_vouch = cmd_prefix + 'vouch'
@@ -1052,8 +1070,7 @@ cmd_writhe = cmd_prefix + 'awrithe'
 cmd_use = cmd_prefix + 'ause'
 cmd_news = cmd_prefix + 'anews'
 cmd_buy = cmd_prefix + 'abuy'
-cmd_thrash = cmd_prefix + 'jiggle'
-cmd_dab = cmd_prefix + 'squirt'
+
 cmd_boo = cmd_prefix + 'aaboo'
 cmd_dance = cmd_prefix + 'aaadance'
 cmd_coinflip = cmd_prefix + 'aco1nfl1p'
@@ -1352,17 +1369,17 @@ cmd_dress_slimeoid_alt1 = cmd_prefix + 'aadecorateslimeoid'
 cmd_undress_slimeoid = cmd_prefix + 'aaundressslimeoid'
 cmd_undress_slimeoid_alt1 = cmd_prefix + 'aaundecorateslimeoid'
 
-cmd_add_quadrant = cmd_prefix + "aaaddquadrant"
-cmd_clear_quadrant = cmd_prefix + "aaclearquadrant"
-cmd_get_quadrants = cmd_prefix + "aaquadrants"
-cmd_get_flushed = cmd_prefix + "aaflushed"
-cmd_get_flushed_alt1 = cmd_prefix + "aamatesprit"
-cmd_get_pale = cmd_prefix + "aapale"
-cmd_get_pale_alt1 = cmd_prefix + "aamoirail"
-cmd_get_caliginous = cmd_prefix + "aacaliginous"
-cmd_get_caliginous_alt1 = cmd_prefix + "aakismesis"
-cmd_get_ashen = cmd_prefix + "aaashen"
-cmd_get_ashen_alt1 = cmd_prefix + "aaauspistice"
+cmd_add_quadrant = cmd_prefix + "addquadrant"
+cmd_clear_quadrant = cmd_prefix + "clearquadrant"
+cmd_get_quadrants = cmd_prefix + "quadrants"
+cmd_get_flushed = cmd_prefix + "flushed"
+cmd_get_flushed_alt1 = cmd_prefix + "matesprit"
+cmd_get_pale = cmd_prefix + "pale"
+cmd_get_pale_alt1 = cmd_prefix + "moirail"
+cmd_get_caliginous = cmd_prefix + "caliginous"
+cmd_get_caliginous_alt1 = cmd_prefix + "kismesis"
+cmd_get_ashen = cmd_prefix + "ashen"
+cmd_get_ashen_alt1 = cmd_prefix + "auspistice"
 
 cmd_trade = cmd_prefix + 'aatrade'
 cmd_offer = cmd_prefix + 'aaoffer'
@@ -1371,17 +1388,18 @@ cmd_completetrade = cmd_prefix + 'aacompletetrade'
 cmd_canceltrade = cmd_prefix + 'vcanceltrade'
 
 # race
-cmd_set_race = cmd_prefix + 'aasetrace'
-cmd_set_race_alt1 = cmd_prefix + 'aaidentifyas'
+cmd_set_race = cmd_prefix + 'setrace'
+cmd_set_race_alt1 = cmd_prefix + 'identifyas'
 cmd_exist = cmd_prefix + 'aaexist'
 cmd_ree = cmd_prefix + 'aaree'
 cmd_autocannibalize = cmd_prefix + 'aaautocannibalize'
 cmd_rattle = cmd_prefix + 'aarattle'
 cmd_beep = cmd_prefix + 'aabeep'
-cmd_yiff = cmd_prefix + 'aayiff'
-cmd_hiss = cmd_prefix + 'aahiss'
+cmd_yiff = cmd_prefix + 'yiff'
+cmd_hiss = cmd_prefix + 'hiss'
 cmd_jiggle = cmd_prefix + 'aatheotherjiggle'
 cmd_request_petting = cmd_prefix + 'sex'
+cmd_request_petting_alt1 = cmd_prefix + 'dom'
 cmd_rampage = cmd_prefix + 'aarampage'
 cmd_flutter = cmd_prefix + 'aaflutter'
 cmd_confuse = cmd_prefix + 'aaconfuse'
@@ -1748,7 +1766,8 @@ cd_new_player = 3 * 24 * 60 * 60 # 72 Hours, 3 days
 
 cd_autocannibalize = 60 * 60 # can only eat yourself once per hour
 cd_drop_bone = 5 * 60
-cd_change_race = 24 * 60 * 60 # can only change your race once per day
+cd_change_race = 5
+#24 * 60 * 60 # can only change your race once per day
 
 cd_gvs_searchforbrainz = 300
 
@@ -1810,8 +1829,9 @@ emote_white = "<:boobskintonew:752181618063704125>"
 emote_nice = "<:nicetits:752183875345580133>"
 emote_squirt = "<:milksquirt:752181619036651630>"
 emote_brop = "<:brop:748778056868691968>"
-emote_lol = ":dunelol:755509867992580240"
-
+emote_lol = "<:dunelol:755509867992580240>"
+emote_gibkiss = "<:gibkiss:755871552280592567>"
+emote_dunekiss = "<:dunekiss:755871575580082216>"
 emote_tacobell = "<:tacobell:431273890195570699>"
 emote_pizzahut = "<:pizzahut:431273890355085323>"
 emote_kfc = "<:kfc:431273890216673281>"
@@ -23455,11 +23475,11 @@ mutations = [
 		id_mutation = mutation_id_lightasafeather,
 		str_describe_self = "You insist the Sonic Adventure games are good because of your fetish, **Sonic The Hedgehog**.",
 		str_describe_other = "You can tell by their Sonic backpack and lack of friends that they have the fetish, **Sonic The Hedgehog**",
-		str_acquire = "Now that you think about it, some of the newer modern Sonic games aren't really that bad. Also Big The Cat is pretty fuckable. You have developed the fetish **Sonic The Hedgehog** **Light As A Feather**.",
+		str_acquire = "Now that you think about it, some of the newer modern Sonic games aren't really that bad. Also Big The Cat is pretty fuckable. You have developed the fetish **Sonic The Hedgehog**.",
 		),
 	EwMutationFlavor(
 		id_mutation = mutation_id_whitenationalist,
-		str_describe_self = "Your **CBT** have made you a hit with the local youth. You're finally just Like Mike (2002).",
+		str_describe_self = "Your **CBT** (Cool Basketball Tricks) have made you a hit with the local youth. You're finally just Like Mike (2002).",
 		str_describe_other = "They're spinning five small basketballs on the tips of their finger. You're jealous of their **CBT**.",
 		str_acquire = "You've seen so many CBT memes that you developed the fetish **CBT**! That stands for Cool Basketball Tricks, right? *Right?*"
 		),
@@ -23519,7 +23539,7 @@ mutations = [
 		),
 	EwMutationFlavor(
 		id_mutation = mutation_id_socialanimal,
-		str_describe_self = "Your charming charisma and dashing good looks make you the life of the party due to **Social Animal**.",
+		str_describe_self = "Your with your big boobs were complimented by an equally big dick thanks to your **Futanari** fetish.",
 		str_describe_other = "That person seems unsatisfied with just big tits, probably because of their **Futanari** fetish.",
 		str_acquire = "Big tits? Pretty based. But what if - now here me out - there was ANOTHER big appendage? Perhaps a big dick? I can see you're interested. You have developed the **Futanari** fetish.",
 		),
@@ -23531,13 +23551,13 @@ mutations = [
 		),
 	EwMutationFlavor(
 		id_mutation = mutation_id_aposematicstench,
-		str_describe_self = "A putrid stench permeates around you all hours of the day due to **Aposematic Stench**.",
-		str_describe_other = "A putrid stench permeates around them all hours of the day due to **Aposematic Stench**.",
+		str_describe_self = "You keep thinking of that special area right next to boobs thanks to your **Armpit** fetish.",
+		str_describe_other = "They keep looking near your boobs, but not directly at them. Almost like they have an **Armpit** fetish",
 		str_acquire = "You notice that there's things on a body that AREN'T boobs. Like armpits. You develop an **Armpit** fetish.",
 		),
 	EwMutationFlavor(
 		id_mutation = mutation_id_lucky,
-		str_describe_self = "Peace and Love. t.**The Beatles**",
+		str_describe_self = "'Peace and Love' - **The Beatles**",
 		str_describe_other = "Oh gross, they're defending the Magical Mystery Tour movie. While all of the music by **The Beatles** is stellar as usual, the sections inbetween are annoyingly vapid.",
 		str_acquire = "Is someone playing The Beatles? You develop a **The Beatles** fetish.",
 		),
@@ -23557,7 +23577,7 @@ mutations = [
 		id_mutation = mutation_id_dumpsterdiver,
 		str_describe_self = "You are exceptionally good at picking up trash due to the fetish for **Anime Girls**.",
 		str_describe_other = "They are exceptionally good at picking up trash due to the fetish for **Anime Girls**.",
-		str_acquire = "uwu owo nyaaaa moshi moshi ^w^ (Translation:You now have a fetish for **Anime Girls**).",
+		str_acquire = "uwu owo nyaaaa moshi moshi ^w^ (Translation: You now have a fetish for **Anime Girls**).",
 		),
 	EwMutationFlavor(
 		id_mutation = mutation_id_trashmouth,
@@ -26266,7 +26286,6 @@ curse_words = { # words that the player should be punished for saying via swear 
 	"asshole":10, # can not be shortened to 'ass' due to words like 'pass' or 'class'
 	"dumbass": 10,
 	"cunt":30,
-	"fuck":10,
 	"bitch":10,
 	"bastard":5,
 	"nigger":80,
@@ -26302,11 +26321,8 @@ curse_responses = [ # scold the player for swearing
 	"Wow, maybe next time be a little nicer, won't you?",
 	"If you don't have anything nice to say, then don't say anything at all.",
 	"Now that's just plain rude.",
-	"And just like that, some of your precious SlimeCoin goes right down the drain.",
 	"Calm down that attitude of yours, will you?",
-	"Your bad manners have costed you a fraction of your SlimeCoin!",
-	"Take your anger out on a juvenile, if you're so inclined to use such vulgar language.",
-	#"You know, don't, say, s-swears."
+	"You know, don't, say, s-swears."
 ]
 
 captcha_dict = [
@@ -26318,31 +26334,26 @@ captcha_dict = [
 	'END', 'HAT', 'CUP', '911', '711',
 	'SIX', 'SMG', 'BOW',
 	#4
-	'GOON', 'DOOR', 'CORP', 'SPAM', 'BLAM',
-	'FISH', 'MINE', 'LOCK', 'OURS', 'ROCK',
-	'DATA', 'LOOK', 'GOTO', 'COIN', 'GANG',
+	'BOOB', 'TITS', 'LOVE', 'DUNE', 'KISS',
+	'FUCK', 'MINE', 'LOCK', 'OURS', 'ROCK',
+	'LOOK', 'FLAT', 'MILK',
 	'HEHE', 'WEED', 'LMAO', 'EPIC', 'NICE',
-	'SOUL', 'KILL', 'FREE', 'GOOP', 'CAVE',
-	'ZOOM', 'FIVE', 'NINE', 'BASS', 'FIRE',
-	'TEXT', 'AWOO',
+	'AWOO',
 	#5
-	'SLIME', 'BOORU', 'ROWDY', 'GHOST', 'ORDER',
-	'SCARE', 'BULLY', 'FERRY', 'SAINT', 'SLASH',
-	'SLOSH', 'PARTY', 'JUVIE', 'BASED', 'TULPA',
-	'SLURP', 'MONTH', 'SEVEN', 'BRASS', 'MINES',
-	'GREEN', 'LIGHT', 'FURRY', 'PIZZA', 'ARENA',
-	'LUCKY', 'RIFLE', '56709',
+	'TRANS', 'BOORU', 
+	'SLOSH', 'PARTY', 'FREAK', 'BASED', 
+	'SLURP', 'TITTY',
+	'LIGHT', 'FURRY', 'PIZZA', 
+	'LUCKY', '56709',
 	#6
-	'SLUDGE', 'KILLER', 'MUNCHY', 'BLAAAP', 'BARTER',
-	'ARTIST', 'FUCKER', 'MINING', 'SURVEY', 'THRASH',
-	'BEWARE', 'STOCKS', 'COWARD', 'CRINGE', 'INVEST', 
-	'BUSTAH', 'KILLAH', 'KATANA', 'GHOSTS', 'BASSED', 
-	'REVIVE', 'BATTLE', 'PAWPAW',
+	'BRAAAP', 'GIBBON',
+	'ARTIST', 'FUCKER',
+	'CRINGE',
+
 	#7
-	'KINGPIN', 'ENDLESS', 'ATTACKS', 'FUCKERS', 'FISHING',
-	'VIOLENT', 'SQUEEZE', 'LOBSTER', 'WESTERN', 'EASTERN', 
-	'REGIONS', 'DISCORD', 'KNUCKLE', 'MOLOTOV', 'SHAMBLE',
-	'WARFARE', 'BIGIRON', 'POUDRIN', 'PATRIOT', 'MINIGUN',
+	'ENDLESS', 'FUCKERS',
+	'SQUEEZE',  'DUNEKUN',
+	'POUDRIN',
 	#8
 	'GAMEPLAY', 'SHAMBLER', 'CONFLICT', 'EXCHANGE', 'FEEDBACK',
 	'VIOLENCE', 'TACOBELL', 'PIZZAHUT', 'OUTSKIRT', 'WHATEVER',
@@ -26365,18 +26376,20 @@ captcha_dict = [
 ]
 
 races = {
-	'humanoid': 'humanoid',
-	'amphibian': 'amphibian',
-	'food': 'food',
-	'skeleton': 'skeleton',
-	'robot': 'robot',
+	'sex-object': 'sex-object',
+	'maiden': 'maiden',
+	#'humanoid': 'humanoid',
+	#'amphibian': 'amphibian',
+	#'food': 'food',
+	#'skeleton': 'skeleton',
+	#'robot': 'robot',
 	'furry': 'furry',
 	'scalie': 'scalie',
-	'slime-derived': 'slime-derived',
-	'monster': 'monster',
-	'critter': 'critter',
-	'avian': 'avian',
-	'other': 'other',
+	#'slime-derived': 'slime-derived',
+	#'monster': 'monster',
+	#'critter': 'critter',
+	#'avian': 'avian',
+	#'other': 'other',
 }
 
 # lists of all the discord server objects served by bot, identified by the server id

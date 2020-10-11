@@ -82,6 +82,9 @@ active_users_map = {}
 cmd_map = {
 	## NEW COMMANDS FOR ENDLESS EXPANSION
 	ewcfg.cmd_kiss: ewcmd.kiss,
+	ewcfg.cmd_kiss_alt1: ewcmd.kiss,
+	ewcfg.cmd_kiss_alt2: ewcmd.kiss,
+	ewcfg.cmd_kiss_alt3: ewcmd.kiss,
 	ewcfg.cmd_smother: ewcmd.smother,
 	ewcfg.cmd_milk: ewcmd.milk,
 	ewcfg.cmd_compliment: ewcmd.compliment,
@@ -90,9 +93,16 @@ cmd_map = {
 	ewcfg.cmd_fondle_alt2: ewcmd.fondle,
 	ewcfg.cmd_flatten: ewcmd.flatten,
 	ewcfg.cmd_hug: ewcmd.hug,
+	ewcfg.cmd_hug_alt1: ewcmd.hug,
 	ewcfg.cmd_grill: ewcmd.grill,
-
-	#ewcfg.cmd_fondle: ewcmd.fondle,
+	ewcfg.cmd_headpat: ewcmd.headpat,
+	ewcfg.cmd_headpat_alt1: ewcmd.headpat,
+	ewcfg.cmd_suckle: ewcmd.suckle,
+	ewcfg.cmd_request_petting: ewrace.request_petting,
+	ewcfg.cmd_request_petting_alt1: ewrace.request_petting,
+	ewcfg.cmd_blush: ewcmd.blush,
+	ewcfg.cmd_cuddle: ewcmd.cuddle,
+	ewcfg.cmd_fuck: ewrace.fuck,
 
 	# Attack another player
 	ewcfg.cmd_kill: ewwep.attack,
@@ -974,29 +984,29 @@ async def on_ready():
 		# kill people who left the server while the bot was offline
 		#ewutils.kill_quitters(server.id) #FIXME function get_member doesn't find users reliably
 
-		asyncio.ensure_future(ewdistrict.capture_tick_loop(id_server = server.id))
-		asyncio.ensure_future(ewutils.bleed_tick_loop(id_server = server.id))
-		asyncio.ensure_future(ewutils.enemy_action_tick_loop(id_server=server.id))
-		asyncio.ensure_future(ewutils.burn_tick_loop(id_server = server.id))
-		asyncio.ensure_future(ewutils.remove_status_loop(id_server = server.id))
+		#asyncio.ensure_future(ewdistrict.capture_tick_loop(id_server = server.id))
+		#asyncio.ensure_future(ewutils.bleed_tick_loop(id_server = server.id))
+		#asyncio.ensure_future(ewutils.enemy_action_tick_loop(id_server=server.id))
+		#asyncio.ensure_future(ewutils.burn_tick_loop(id_server = server.id))
+		#asyncio.ensure_future(ewutils.remove_status_loop(id_server = server.id))
 		asyncio.ensure_future(ewworldevent.event_tick_loop(id_server = server.id))
-		asyncio.ensure_future(ewutils.sap_tick_loop(id_server = server.id))
+		#asyncio.ensure_future(ewutils.sap_tick_loop(id_server = server.id))
 		# SWILLDERMUK
 		# asyncio.ensure_future(ewutils.spawn_prank_items_tick_loop(id_server = server.id))
 		# asyncio.ensure_future(ewutils.generate_credence_tick_loop(id_server = server.id))
 		
-		if ewcfg.gvs_active:
-			asyncio.ensure_future(ewutils.gvs_gamestate_tick_loop(id_server=server.id))
-		else:
+	#	if ewcfg.gvs_active:
+	#		asyncio.ensure_future(ewutils.gvs_gamestate_tick_loop(id_server=server.id))
+	#	else:
 			# Enemies do not spawn randomly during Gankers Vs. Shamblers
-			asyncio.ensure_future(ewutils.spawn_enemies_tick_loop(id_server=server.id))
+	#		asyncio.ensure_future(ewutils.spawn_enemies_tick_loop(id_server=server.id))
 
-		if not debug:
+	#	if not debug:
 			#await ewtransport.init_transports(id_server = server.id)
-			asyncio.ensure_future(ewweather.weather_tick_loop(id_server = server.id))
-		asyncio.ensure_future(ewslimeoid.slimeoid_tick_loop(id_server = server.id))
-		asyncio.ensure_future(ewfarm.farm_tick_loop(id_server = server.id))
-		asyncio.ensure_future(ewsports.slimeball_tick_loop(id_server = server.id))
+	#		asyncio.ensure_future(ewweather.weather_tick_loop(id_server = server.id))
+	#	asyncio.ensure_future(ewslimeoid.slimeoid_tick_loop(id_server = server.id))
+	#	asyncio.ensure_future(ewfarm.farm_tick_loop(id_server = server.id))
+	#	asyncio.ensure_future(ewsports.slimeball_tick_loop(id_server = server.id))
 		
 		print('\nNUMBER OF CHANNELS IN SERVER: {}\n'.format(len(server.channels)))
 
@@ -1864,8 +1874,8 @@ async def on_message(message):
 		# AWOOOOO
 		elif re_awoo.match(cmd):
 			return await ewcmd.cmd_howl(cmd_obj)
-		elif re_moan.match(cmd):
-			return await ewcmd.cmd_moan(cmd_obj)
+		#elif re_moan.match(cmd):
+		#	return await ewcmd.cmd_moan(cmd_obj)
 
 		# Debug command to override the role of a user
 		elif debug == True and cmd == (ewcfg.cmd_prefix + 'setrole'):

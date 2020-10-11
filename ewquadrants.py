@@ -162,9 +162,9 @@ async def add_quadrant(cmd):
 		response = "Please select a target for your romantic feelings."
 		return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
 
-	if user_data.has_soul == 0:
-		response = "A soulless juvie can only desperately reach for companionship, they will never find it."
-		return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
+#	if user_data.has_soul == 0:
+#		response = "A soulless juvie can only desperately reach for companionship, they will never find it."
+#		return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
 
 	target = cmd.mentions[0].id
 	target2 = None

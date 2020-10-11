@@ -1125,15 +1125,13 @@ class EwUser:
 					self.sidearm = result[47]
 					self.gambit = result[48]
 					self.credence = result[49]
-
-					self.sex_counter = result[50]
-
 					self.credence_used = result[50]
 					self.race = result[51]
 					self.time_racialability = result[52]
 					self.time_lastpremiumpurchase = result[53]
 					self.gvs_currency = result[54]
 					self.gvs_time_lastshambaquarium = result[55]
+					self.sex_counter = result[56]
 				else:
 					self.poi = ewcfg.poi_id_downtown
 					self.life_state = ewcfg.life_state_juvenile

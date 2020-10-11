@@ -125,7 +125,9 @@ def gen_score_text(
 		response = "{}'s power is beyond your understanding.".format(display_name)
 	else:
 		# return somebody's score
-		response = "{}'s cupsize is {}and their overall estrogen level is {:,} {}. They've had sex {} times".format(display_name, user_data.slimelevel, user_data.slimes, user_data.sex_counter, (" and {} estrogen poudrin{}".format(poudrin_amount, ("" if poudrin_amount == 1 else "s")) if poudrin_amount > 0 else ""))
+		response = "{}'s cupsize is {}, their overall estrogen level is {:,} {}. They've had sex [{}] time(s).".format(display_name,user_data.slimelevel, user_data.slimes, (" and {} estrogen poudrin{}".format(poudrin_amount, ("" if poudrin_amount == 1 else "s")) if poudrin_amount > 0 else ""), user_data.sex_counter)		
+
+		#response = "{}'s cupsize is {} and their overall estrogen level is {:,} {}. They've had sex {} times".format(display_name, user_data.slimelevel, user_data.slimes, user_data.sex_counter, (" and {} estrogen poudrin{}".format(poudrin_amount, ("" if poudrin_amount == 1 else "s")) if poudrin_amount > 0 else ""))
 
 	return response
 
@@ -144,7 +146,7 @@ async def score(cmd):
 		# return my score
 		print("poudrins found: {}".format(poudrin_amount))
 
-		response = "Your cupsize is {}, your overall estrogen level is {:,} {}. You've had sex {} times.".format(user_data.slimelevel, user_data.slimes, (" and {} estrogen poudrin{}".format(poudrin_amount, ("" if poudrin_amount == 1 else "s")) if poudrin_amount > 0 else ""), user_data.sex_counter)		
+		response = "Your cupsize is {}, your overall estrogen level is {:,} {}. You've had sex [{}] time(s).".format(user_data.slimelevel, user_data.slimes, (" and {} estrogen poudrin{}".format(poudrin_amount, ("" if poudrin_amount == 1 else "s")) if poudrin_amount > 0 else ""), user_data.sex_counter)		
 	else:
 		member = cmd.mentions[0]
 		response = gen_score_text(
@@ -969,7 +971,7 @@ async def hurl(cmd):
 	await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, 'https://ew.krakissi.net/img/tfaaap-hurl.gif'))
 
 async def lol(cmd):
-	await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, ewcfg.emote_dunelol + 'You laugh out loud!' + ewcfg.emote_dunelol))
+	await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, ewcfg.emote_lol + 'You laugh out loud!' + ewcfg.emote_lol))
 
 """
 	Rowdys THRASH/jiggle
@@ -1021,18 +1023,32 @@ async def kiss(cmd):
 		member = cmd.mentions[0]
 		
 		response_choices = [
-			"! How cute!",
-			"! Wow! Hot and steamy!",
-			", how adorable! UwU",
+			"! How cute!" + ewcfg.emote_dunekiss ,
+			"! Wow! Hot and steamy!" + ewcfg.emote_dunekiss ,
+			", how adorable! UwU" + ewcfg.emote_dunekiss ,
 		]
 		
 		choice_response = random.choice(response_choices)
 		
-		response = "You give {} a kiss{}".format(member.display_name, choice_response)
+		response = ewcfg.emote_gibkiss + "You give {} a kiss{}".format(member.display_name, choice_response)
 	else:
-		response = "You want to kiss... who, exactly?"
+		response = "You give yourself a kiss! It's still pretty cute."
 	
 	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
+
+async def headpat(cmd):
+	if cmd.mentions_count == 1:
+		member = cmd.mentions[0]
+
+		response = "You give {} a headpat! *pat* *pat* *pat*".format(member.display_name)
+	else:
+		response = "You give yourself a headpat. A bit unorthodox, but acceptable."
+	
+	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
+
+async def blush(cmd):
+	await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, 'Your heart goes *doki* *doki*! (•ﾟдﾟ•)'))
+
 
 async def smother(cmd):
 	if cmd.mentions_count == 1:
@@ -1056,10 +1072,8 @@ async def milk(cmd):
 	if cmd.mentions_count == 1:
 		member = cmd.mentions[0]
 		user_data = EwUser(member = cmd.message.author)
-		if user_data.faction == ewcfg.faction_milkers:
-			response_choices = [
+		response_choices = [
 			"Woah, that's a lot of milk!",
-			"Yum!",
 			"It's overflowing!",
 		]
 		
@@ -1068,6 +1082,29 @@ async def milk(cmd):
 		response = "You give {}'s titties a nice milking! {}".format(member.display_name, choice_response)
 	else:
 		response = "You whip out your tits and give yourself a nice milking!"
+	
+	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
+
+async def suckle(cmd):
+	if cmd.mentions_count == 1:
+		member = cmd.mentions[0]
+		user_data = EwUser(member = cmd.message.author)
+		
+		response_choices = [
+			"Yum!",
+			"Thanks for the meal!",
+			"You drink and drink until you can't drink anymore, but the milk never stops flowing!",
+			"SUUUUOOOOOOOUCK",
+			"SLURP",
+			"Drink up for health and long life!",
+			"It seems that drinking {} makes your magic power last for three days..".format(member.display_name)
+		]
+		
+		choice_response = random.choice(response_choices)
+		
+		response = "You give {}'s titties a nice suck! {}".format(member.display_name, choice_response)
+	else:
+		response = "You whip out your tits and suck them yourself!"
 	
 	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
 
@@ -1120,6 +1157,16 @@ async def hug(cmd):
 		response = "You give {} a biiiiiiiiiig hug!".format(member.display_name)
 	else:
 		response = "You hug yourself, which is valid."
+	
+	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
+
+async def cuddle(cmd):
+	if cmd.mentions_count == 1:
+		member = cmd.mentions[0]
+		
+		response = "You snuggle up to {} and get comfortable. (¬‿¬)".format(member.display_name)
+	else:
+		response = "You cuddle up with a good book. （⌒▽⌒）"
 	
 	return await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, response))
 
@@ -1372,7 +1419,7 @@ async def wiki(cmd):
 	Link to the fan art booru.
 """
 async def booru(cmd):
-	await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, 'Rowdy Fuckers Cop Killers Booru: http://rfck.booru.org/'))
+	await ewutils.send_message(cmd.client, cmd.message.channel, ewutils.formatMessage(cmd.message.author, 'Big Boobys Mommy Milkers: https://bbmm.booru.org'))
 
 """
 	Link to the leaderboards on ew.krakissi.net.

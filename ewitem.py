@@ -1576,7 +1576,7 @@ def find_poudrin(id_user = None, id_server = None):
 
 	for poudrin in items:
 		name = poudrin.get('name')
-		if name != "Slime Poudrin":
+		if name != "Estrogen Poudrin":
 			pass
 		else:
 			poudrins.append(poudrin)
